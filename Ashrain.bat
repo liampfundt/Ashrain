@@ -1,19 +1,25 @@
 @ECHO OFF
 CHCP 65001 >NUL
-CALL :Function.clearscreen
 
 :: LIAM PFUNDT SOFTWARE IS NOT RESPONSIBLE FOR ANY DAMAGE TO YOUR PC NOR ACCIDENTAL LOSS OF FILES.
 :: DON'T TAMPER WITH THE SOURCE FILES OF ASHRAIN AND FOLLOW THE LICENSE (..\copabanana_vbtxlicense.txt).
 :: USE ASHRAIN WITH CAUTION ON YOUR OWN RISK.
 
-:: Ashrain partly uses third-party software, here is what software and it's license are used an can be found:
+:: Ashrain partly uses third-party software, here is what software and it's license are used and can be found:
 :: bin\aria2c.exe -> ..\licenses\COPYING & ..\licenses\LICENSE.OpenSSL
+
+:: About 98% is written by hand and about 2% of error correction and solving was done by ChatGPT.
+:: Accurate percentages, for if you were wondering...
+
+:BOF
+
+CALL :Function.clearscreen
 
 :: Set basic variables
 SET "Ashrain.Github=https://github.com/liampfundt/Ashrain"
-SET "Ashrain.author=Liam Pfundt"
 SET "Ashrain.support=liampfundtsoftware@gmail.com"
 SET "Ashrain.version=Ashrain Twux 1.0"
+SET "Ashrain.author=Liam Pfundt"
 SET "Ashrain.user=%username%"
 TITLE %Ashrain.version%
 
@@ -34,16 +40,21 @@ SET "Download.Sonoma14=https://ia800104.us.archive.org/1/items/macOS-X-images/So
 :: All these downloads are provided by @dinmik_ler on archive.org, thanks for that.
 
 :: Set paths
-SET "Path.VBoxManage=bin\VBoxManage.exe"
 SET "Path.aria2c=bin\aria2c.exe"
 SET "Path.scripts=scripts\"
 SET "Path.images=images\"
 SET "Path.bin=bin\"
+IF NOT DEFINED Path.VBoxManage (
+    SET "Path.VBoxManage=%ProgramFiles%\Oracle\VirtualBox\VBoxManage.exe"
+) ELSE (
+    BREAK
+)
 
 GOTO :Ashrain.menu
 
 :: Display the main menu
 :Ashrain.menu
+CALL :Function.clearscreen
 CALL :Function.banner
 ECHO ┌────────────────────┐                                                            
 ECHO │  1. Guided Setup   │                                                            
@@ -58,7 +69,7 @@ ECHO │  5. Ashrain Info   │
 ECHO │                    │                                                            
 ECHO │   6. Licensing     │                                                            
 ECHO │────────────────────┘ 
-CHOICE /N /C 123456 /M "└───── Choice: "
+CHOICE /N /C 1234567 /M "└───── Choice: "
 
 :: Check the users choice
 IF %ERRORLEVEL% == 1 GOTO :Setup.guided
@@ -67,18 +78,39 @@ IF %ERRORLEVEL% == 3 GOTO :Setup.installiso
 IF %ERRORLEVEL% == 4 GOTO :Ashrain.exit
 IF %ERRORLEVEL% == 5 GOTO :Ashrain.info
 IF %ERRORLEVEL% == 6 GOTO :Ashrain.licensing
+IF %ERRORLEVEL% == 7 GOTO :Ashrain.shell
 GOTO :Setup.error
 
 :: Run the guided setup
 :Setup.guided
 CALL :Function.clearscreen
-PING LOCALHOST -n 2 >NUL
 CALL :Function.banner
-ECHO ┌────────────────────┐                                                            
-ECHO │    Guided Setup    │                                                            
-ECHO └────────────────────┘                                                            
-pause
-                                                   
+ECHO ┌────────────────────┐ Welcome to the Ashrain Guided Setup!                                              
+ECHO │    Guided Setup    │ Firstly, you must select a macOS version.                       
+ECHO └────────────────────┘ Choose a macOS from the list to your liking!                  
+CALL :Function.oslist
+SET /P "Choice.os=└─────── Please enter the version number: "
+
+IF "%Choice.os%"=="10.7"  SET "Choice.os.selected=[92mMac OS X Lion 10.7[0m"
+IF "%Choice.os%"=="10.8"  SET "Choice.os.selected=[92mOS X Mountain Lion 10.8[0m"
+IF "%Choice.os%"=="10.10" SET "Choice.os.selected=[92mOS X Yosemite 10.10[0m"
+IF "%Choice.os%"=="10.11" SET "Choice.os.selected=[92mOS X El Capitan 10.11[0m"
+IF "%Choice.os%"=="10.12" SET "Choice.os.selected=[38;5;46mmacOS Sierra 10.12[0m"
+IF "%Choice.os%"=="10.13" SET "Choice.os.selected=[38;5;46mmacOS High Sierra 10.13[0m"
+IF "%Choice.os%"=="10.14" SET "Choice.os.selected=[38;5;46mmacOS Mojave 10.14[0m"
+IF "%Choice.os%"=="10.15" SET "Choice.os.selected=[32mmacOS Catalina 10.15[0m"
+IF "%Choice.os%"=="11"    SET "Choice.os.selected=[33mmacOS Big Sur 11[0m"
+IF "%Choice.os%"=="12"    SET "Choice.os.selected=[38;5;208mmacOS Monterey 12[0m"
+IF "%Choice.os%"=="13"    SET "Choice.os.selected=[31mmacOS Ventura 13[0m"
+IF "%Choice.os%"=="14"    SET "Choice.os.selected=[91mmacOS Sonoma 14[0m"
+CHOICE /N /C YN /M "└─────── Are you sure to download %Choice.os.selected% (Y/n): "
+
+IF %ERRORLEVEL% == 1 GOTO :Setup.guided.download
+IF %ERRORLEVEL% == 2 GOTO :Setup.guided
+
+:: Download the image file
+:Setup.guided.download
+CALL :Function.clearscreen
 
 
 
@@ -90,6 +122,23 @@ pause
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:: Function block (Put all functions in this section)
 :Function.banner
 ECHO [38;2;255;0;0m┌[38;2;255;56;0m─[38;2;255;113;0m─[38;2;255;169;0m─[38;2;255;225;0m─[38;2;228;255;0m─[38;2;172;255;0m─[38;2;116;255;0m─[38;2;60;255;0m─[38;2;3;255;0m─[38;2;0;255;53m─[38;2;0;255;109m─[38;2;0;255;166m─[38;2;0;255;222m─[38;2;0;232;255m─[38;2;0;175;255m─[38;2;0;119;255m─[38;2;0;63;255m─[38;2;0;7;255m─[38;2;50;0;255m─[38;2;106;0;255m─[38;2;162;0;255m┐[0m ┌──────────────────────┐ 
 ECHO [38;2;255;56;0m│[38;2;255;113;0m [38;2;255;169;0m [38;2;255;225;0m [38;2;228;255;0m [38;2;172;255;0m [38;2;116;255;0m [38;2;60;255;0m [38;2;3;255;0m [38;2;0;255;53m [38;2;0;255;109m [38;2;0;255;166m [38;2;0;255;222m [38;2;0;232;255m [38;2;0;175;255m [38;2;0;119;255m [38;2;0;63;255m [38;2;0;7;255m [38;2;50;0;255m [38;2;106;0;255m [38;2;162;255m [38;2;219;0;255m│[0m │                      │      
@@ -105,49 +154,28 @@ GOTO :EOF
 :Function.clearscreen
 CLS
 COLOR 0F
+PING LOCALHOST -n 2 >NUL
 GOTO :EOF             
 
+:: Shell block (Put all shell functions in this section)
+:Ashrain.shell
+ECHO.
+SET /P "Shell.input= %ashrain.user%/ashrain-# "
+CALL :Shell.function.%Shell.input%
+GOTO :Ashrain.shell
 
+:Shell.function.Debug.variables
+SET | findstr /L /B "Ashrain."
+SET | findstr /L /B "Download."
+SET | findstr /L /B "Path."
+GOTO :EOF
 
+:Shell.function.Setpath
+SET /P "Shell.function.Setpath.Input=Variable: "
+SET /P "Shell.function.Setpath.Output=%Shell.function.Setpath.Input% = "
+SET "%Shell.function.Setpath.Input%=%Shell.function.Setpath.Output%"
+GOTO :EOF
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:Guided_setup
-
-
-
-
-
-
-
-
-
-
-
-Pause
-exit /b
+:Shell.function.Return
+CALL :Function.clearscreen
+GOTO :Ashrain.menu
