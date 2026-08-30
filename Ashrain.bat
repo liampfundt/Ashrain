@@ -112,7 +112,7 @@ IF %ERRORLEVEL% == 2 GOTO :Setup.guided
 :Setup.guided.download
 CALL :Function.clearscreen
 CALL :Function.banner
-ECHO ┌────────────────────┐  Please wait while Ashrain is downloading the required image file.                                              
+ECHO ┌────────────────────┐  Please wait while Ashrain is downloading the required image file.
 ECHO │    Guided Setup    │  The rest of the process is automated by Ashrain.                  
 ECHO └────────────────────┘  Note: This might take a while depending on your internet and storage speed.                                   
 ECHO ┌──────────────────────────────────────────────┐                                                                  
@@ -142,15 +142,7 @@ IF "%Setup.os.download%" == "12" "%Path.aria2c%" -x 16 -s 16 --check-certificate
 IF "%Setup.os.download%" == "13" "%Path.aria2c%" -x 16 -s 16 --check-certificate=false -o "%Path.images%macOSVentura13.iso" "%Download.Ventura13%"
 IF "%Setup.os.download%" == "14" "%Path.aria2c%" -x 16 -s 16 --check-certificate=false -o "%Path.images%macOSSonoma14.iso" "%Download.Sonoma14%"
 
-
-
-
-
-
-
-
-
-
+:: -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 :: Function block (Put all functions in this section)
 :Function.banner
