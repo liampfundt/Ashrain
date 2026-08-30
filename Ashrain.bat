@@ -1,11 +1,9 @@
 @ECHO OFF
 CHCP 65001 >NUL
 
-:: LIAM PFUNDT SOFTWARE IS NOT RESPONSIBLE FOR ANY DAMAGE TO YOUR PC NOR ACCIDENTAL LOSS OF FILES.
-:: DON'T TAMPER WITH THE SOURCE FILES OF ASHRAIN AND FOLLOW THE LICENSE (..\copabanana_vbtxlicense.txt).
-:: USE ASHRAIN WITH CAUTION ON YOUR OWN RISK.
-
-:: Ashrain partly uses third-party software, here is what software and it's license are used and can be found:
+:: LIAM PFUNDT IS NOT RESPONSIBLE FOR ANY ACCIDENTAL DATA LOSS.
+:: Ashrain is licensed under the GNU General Public License v3.0 (GNU GPLv3), which can be found in "..\licenses\LICENSE".
+:: Ashrain also partly uses third-party software, here is what software and its license are used and can be found:
 :: bin\aria2c.exe -> ..\licenses\COPYING & ..\licenses\LICENSE.OpenSSL
 
 :: About 98% is written by hand and about 2% of error correction and solving was done by ChatGPT.
@@ -17,6 +15,7 @@ CALL :Function.clearscreen
 
 :: Set basic variables
 SET "Ashrain.Github=https://github.com/liampfundt/Ashrain"
+SET "Ashrain.license=GNU General Public License v3.0"
 SET "Ashrain.support=liampfundtsoftware@gmail.com"
 SET "Ashrain.version=Ashrain Twux 1.0"
 SET "Ashrain.author=Liam Pfundt"
