@@ -186,4 +186,6 @@ GOTO :EOF
 CALL :Function.clearscreen
 GOTO :Ashrain.menu
 
+:: GIT TEST
+
 :: Error block (Put all errors in this section)
