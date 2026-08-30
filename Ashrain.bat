@@ -2,7 +2,7 @@
 CHCP 65001 >NUL
 
 :: LIAM PFUNDT IS NOT RESPONSIBLE FOR ANY ACCIDENTAL DATA LOSS.
-:: Ashrain is licensed under the GNU General Public License v3.0 (GNU GPLv3), which can be found in "..\licenses\LICENSE".
+:: Ashrain is licensed under the GNU General Public License v3.0 (GNU GPLv3), which can be found in "..\LICENSE".
 :: Ashrain also partly uses third-party software, here is what software and its license are used and can be found:
 :: bin\aria2c.exe -> ..\licenses\COPYING & ..\licenses\LICENSE.OpenSSL
 
