@@ -1,0 +1,14 @@
+NAME            VERSION          SIZE           STABILITY
+
+Lion            10.7             5.5 GB         [92mVery Stable[0m
+Mountain Lion   10.8             5.1 GB         [92mVery Stable[0m
+Yosemite        10.10            6.6 GB         [92mVery Stable[0m
+El Capitan      10.11            7.1 GB         [92mVery Stable[0m
+Sierra          10.12            6.2 GB         [38;5;46mSuper Stable[0m
+High Sierra     10.13            5.1 GB         [38;5;46mSuper Stable[0m
+Mojave          10.14            5.9 GB         [38;5;46mSuper Stable[0m
+Catalina        10.15            7.9 GB         [32mStable[0m
+Big Sur         11              12.6 GB         [33mModerate[0m
+Monterey        12              13.6 GB         [38;5;208mUnstable[0m
+Ventura         13              13.2 GB         [31mVery Unstable[0m
+Sonoma          14              14.1 GB         [91mSuper Unstable[0m
