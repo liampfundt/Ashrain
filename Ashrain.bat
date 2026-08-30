@@ -1,10 +1,31 @@
 @ECHO OFF
 CHCP 65001 >NUL
 
-:: LIAM PFUNDT IS NOT RESPONSIBLE FOR ANY ACCIDENTAL DATA LOSS.
-:: Ashrain is licensed under the GNU General Public License v3.0 (GNU GPLv3), which can be found in "..\LICENSE".
-:: Ashrain also partly uses third-party software, here is what software and its license are used and can be found:
-:: bin\aria2c.exe -> ..\licenses\COPYING & ..\licenses\LICENSE.OpenSSL
+:: ============================================================
+:: Ashrain
+:: Copyright (C) 2026 Liam Pfundt
+::
+:: Ashrain is free software: you can redistribute it and/or
+:: modify it under the terms of the GNU General Public License
+:: as published by the Free Software Foundation, either version 3
+:: of the License, or (at your option) any later version.
+::
+:: Ashrain is distributed in the hope that it will be useful,
+:: but WITHOUT ANY WARRANTY; without even the implied warranty of
+:: MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+::
+:: See the LICENSE file for the full GNU GPLv3 license.
+:: ============================================================
+
+:: Liam Pfundt is not responsible for accidental data loss
+:: resulting from the use or misuse of Ashrain.
+
+:: Ashrain includes third-party software:
+::
+:: bin\aria2c.exe
+::   License files:
+::   ..\licenses\COPYING
+::   ..\licenses\LICENSE.OpenSSL
 
 :: About 98% is written by hand and about 2% of error correction and solving was done by ChatGPT.
 :: Accurate percentages, for if you were wondering...
